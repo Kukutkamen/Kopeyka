@@ -1,56 +1,36 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Копейка</title>
     <link rel="stylesheet" href="style.css">
+    <!-- VK Bridge для работы внутри ВКонтакте -->
     <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
-    <!-- Подключаем Chart.js для диаграмм -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="app">
+        <!-- Шапка -->
         <header class="header">
             <h1>🪙 Копейка</h1>
             <div class="balance">Баланс: <span id="total-balance">0 ₽</span></div>
         </header>
 
+        <!-- Основная часть -->
         <main class="main">
-            <!-- Экран операций -->
-            <div id="operations-tab" class="tab-content active">
-                <button id="add-operation-btn" class="add-button">+</button>
-                <div id="operations-list" class="operations-list"></div>
-            </div>
-
-            <!-- Экран статистики -->
-            <div id="statistics-tab" class="tab-content">
-                <div class="stats-header">
-                    <h2>Статистика расходов</h2>
-                    <select id="period-select" class="period-select">
-                        <option value="week">Неделя</option>
-                        <option value="month" selected>Месяц</option>
-                        <option value="all">Все время</option>
-                    </select>
-                </div>
-                <div class="chart-container">
-                    <canvas id="chart"></canvas>
-                </div>
-                <div id="chart-legend" class="chart-legend"></div>
+            <button id="add-operation-btn" class="add-button">+</button>
+            <div id="operations-list" class="operations-list">
+                <!-- Операции появятся здесь -->
             </div>
         </main>
 
+        <!-- Вкладки -->
         <nav class="tabs">
-            <button class="tab active" data-tab="operations">
-                <span class="tab-icon">💸</span>
-                <span class="tab-text">Операции</span>
-            </button>
-            <button class="tab" data-tab="statistics">
-                <span class="tab-icon">📊</span>
-                <span class="tab-text">Статистика</span>
-            </button>
+            <button class="tab active" data-tab="operations">Операции</button>
+            <button class="tab" data-tab="statistics">Статистика</button>
         </nav>
 
+        <!-- Всплывающее окно -->
         <div id="modal" class="modal">
             <div class="modal-content">
                 <h2>Добавить операцию</h2>
@@ -60,7 +40,6 @@
                     <option value="transport">🚗 Транспорт</option>
                     <option value="entertainment">🎬 Развлечения</option>
                     <option value="health">💊 Здоровье</option>
-                    <option value="shopping">🛍️ Покупки</option>
                     <option value="income">💰 Доход</option>
                     <option value="other">📁 Другое</option>
                 </select>
